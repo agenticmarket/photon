@@ -46,6 +46,12 @@ jobs:
           # The library imports nothing outside the standard library.
           if [ "$(go list -m all | wc -l)" -ne 1 ]; then go list -m all; exit 1; fi
       - name: staticcheck
+        # staticcheck 0.8.1 cannot yet read the package export data written by
+        # Go 1.27.2 ("export data version 5"). Analysis does not need the
+        # security patch, so it runs on 1.27.1; tests and govulncheck stay on
+        # the latest release. Remove the pin once staticcheck supports 1.27.2.
+        env:
+          GOTOOLCHAIN: go1.27.1
         run: go run honnef.co/go/tools/cmd/staticcheck@latest ./...
       - name: govulncheck
         run: go run golang.org/x/vuln/cmd/govulncheck@latest ./...

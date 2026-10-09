@@ -1,0 +1,11 @@
+goos: windows
+goarch: amd64
+pkg: github.com/agenticmarket/photon
+cpu: AMD Ryzen 7 6800HS with Radeon Graphics         
+BenchmarkSSETokenLatency-16    	    2000	     16695 ns/op
+BenchmarkSSETokenLatency-16    	    2000	     17038 ns/op
+BenchmarkSSETokenLatency-16    	    2000	     17157 ns/op
+BenchmarkSSETokenLatency-16    	    2000	     17135 ns/op
+BenchmarkSSETokenLatency-16    	    2000	     16622 ns/op
+BenchmarkSSETokenLatency-16    	    2000	     16791 ns/op
+PASS

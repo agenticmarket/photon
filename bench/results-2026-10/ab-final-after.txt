@@ -1,0 +1,66 @@
+goos: windows
+goarch: amd64
+pkg: github.com/agenticmarket/photon
+cpu: AMD Ryzen 7 6800HS with Radeon Graphics         
+BenchmarkServerStatic-16            	 8666186	       144.2 ns/op	     320 B/op	       1 allocs/op
+BenchmarkServerParam-16             	 3050900	       397.4 ns/op	     656 B/op	       3 allocs/op
+BenchmarkServerParallel-16          	 4831512	       231.5 ns/op	     657 B/op	       3 allocs/op
+BenchmarkRouterParallelStatic-16    	325343175	         3.566 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSSEBurst-16                	 9464811	       117.0 ns/op	 316.33 MB/s	       0 B/op	       0 allocs/op
+BenchmarkSSEConcurrentStreams-16    	   77022	     14852 ns/op	   3366598 events/s	   12751 B/op	      98 allocs/op
+PASS
+goos: windows
+goarch: amd64
+pkg: github.com/agenticmarket/photon
+cpu: AMD Ryzen 7 6800HS with Radeon Graphics         
+BenchmarkServerStatic-16            	 8269143	       140.7 ns/op	     320 B/op	       1 allocs/op
+BenchmarkServerParam-16             	 2963778	       413.1 ns/op	     656 B/op	       3 allocs/op
+BenchmarkServerParallel-16          	 5484723	       219.5 ns/op	     657 B/op	       3 allocs/op
+BenchmarkRouterParallelStatic-16    	336333050	         3.476 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSSEBurst-16                	10018324	       118.0 ns/op	 313.61 MB/s	       0 B/op	       0 allocs/op
+BenchmarkSSEConcurrentStreams-16    	   70012	     14930 ns/op	   3348866 events/s	   12688 B/op	      98 allocs/op
+PASS
+goos: windows
+goarch: amd64
+pkg: github.com/agenticmarket/photon
+cpu: AMD Ryzen 7 6800HS with Radeon Graphics         
+BenchmarkServerStatic-16            	 8820622	       137.9 ns/op	     320 B/op	       1 allocs/op
+BenchmarkServerParam-16             	 2773623	       425.5 ns/op	     656 B/op	       3 allocs/op
+BenchmarkServerParallel-16          	 5702266	       212.7 ns/op	     657 B/op	       3 allocs/op
+BenchmarkRouterParallelStatic-16    	347611071	         3.516 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSSEBurst-16                	 9945176	       117.5 ns/op	 315.02 MB/s	       0 B/op	       0 allocs/op
+BenchmarkSSEConcurrentStreams-16    	   63994	     15658 ns/op	   3193233 events/s	   12742 B/op	      98 allocs/op
+PASS
+goos: windows
+goarch: amd64
+pkg: github.com/agenticmarket/photon
+cpu: AMD Ryzen 7 6800HS with Radeon Graphics         
+BenchmarkServerStatic-16            	 8411300	       138.6 ns/op	     320 B/op	       1 allocs/op
+BenchmarkServerParam-16             	 2905732	       408.0 ns/op	     656 B/op	       3 allocs/op
+BenchmarkServerParallel-16          	 5346904	       225.7 ns/op	     657 B/op	       3 allocs/op
+BenchmarkRouterParallelStatic-16    	334366804	         3.609 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSSEBurst-16                	10446746	       118.1 ns/op	 313.37 MB/s	       0 B/op	       0 allocs/op
+BenchmarkSSEConcurrentStreams-16    	   73983	     15203 ns/op	   3288779 events/s	   12685 B/op	      98 allocs/op
+PASS
+goos: windows
+goarch: amd64
+pkg: github.com/agenticmarket/photon
+cpu: AMD Ryzen 7 6800HS with Radeon Graphics         
+BenchmarkServerStatic-16            	 7829800	       142.2 ns/op	     320 B/op	       1 allocs/op
+BenchmarkServerParam-16             	 3038241	       406.2 ns/op	     656 B/op	       3 allocs/op
+BenchmarkServerParallel-16          	 5504535	       222.5 ns/op	     657 B/op	       3 allocs/op
+BenchmarkRouterParallelStatic-16    	339987357	         3.505 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSSEBurst-16                	10087754	       119.7 ns/op	 309.19 MB/s	       0 B/op	       0 allocs/op
+BenchmarkSSEConcurrentStreams-16    	   70994	     15086 ns/op	   3314222 events/s	   12699 B/op	      98 allocs/op
+PASS
+goos: windows
+goarch: amd64
+pkg: github.com/agenticmarket/photon
+cpu: AMD Ryzen 7 6800HS with Radeon Graphics         
+BenchmarkServerStatic-16            	 8872155	       141.8 ns/op	     320 B/op	       1 allocs/op
+BenchmarkServerParam-16             	 3010000	       409.7 ns/op	     656 B/op	       3 allocs/op
+BenchmarkServerParallel-16          	 5568328	       218.0 ns/op	     657 B/op	       3 allocs/op
+BenchmarkRouterParallelStatic-16    	331738683	         3.526 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSSEBurst-16                	 9218444	       117.5 ns/op	 314.96 MB/s	       0 B/op	       0 allocs/op
+BenchmarkSSEConcurrentStreams-16    	   72043	     15276 ns/op	   3273173 events/s	   12685 B/op	      98 allocs/op
+PASS

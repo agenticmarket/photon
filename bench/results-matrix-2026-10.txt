@@ -1,0 +1,143 @@
+# Photon performance audit — workload matrix
+
+128 connections, 2s warmup, 5s measurement x 3 repetitions (best and median
+reported), loopback TCP, HTTP/1.1 keep-alive.
+
+Repetitions matter: single-run throughput on this host varies by up to
+30% between runs, which is larger than the gap between frameworks. A
+single-run table would report noise as a ranking.
+
+Latency columns are microseconds: p50/p90/p95/p99/p99.9/max.
+allocs and B/op are process-wide, so they include the client; they are an
+upper bound on the server's cost, not a server-only figure.
+
+## plain — GET /
+
+  repetition 1/3 complete
+  repetition 2/3 complete
+  repetition 3/3 complete
+framework  req/s (best)  req/s (median)  spread  p50  p99   p99.9  allocs  B/op  
+---------  ------------  --------------  ------  ---  ----  -----  ------  ------
+net/http   237,368       236,400         10.4%   530  2874  5135   30.0    2.5 KB
+photon     256,128       239,638         9.5%    0    2635  4573   30.0    2.5 KB
+chi        249,805       233,212         19.4%   0    2717  4631   32.0    2.9 KB
+gin        243,663       243,339         10.5%   507  2741  5516   31.0    2.5 KB
+echo       249,298       239,134         11.9%   380  2621  4816   29.0    2.5 KB
+
+## json — GET /health
+
+  repetition 1/3 complete
+  repetition 2/3 complete
+  repetition 3/3 complete
+framework  req/s (best)  req/s (median)  spread  p50  p99   p99.9  allocs  B/op  
+---------  ------------  --------------  ------  ---  ----  -----  ------  ------
+net/http   271,315       227,727         31.6%   0    2528  5049   30.0    2.5 KB
+photon     258,559       253,649         15.3%   0    2638  5845   30.0    2.5 KB
+chi        289,401       250,929         19.5%   0    2321  3927   32.0    2.9 KB
+gin        278,222       256,789         18.0%   0    2347  4183   31.0    2.6 KB
+echo       282,982       278,247         20.2%   0    2458  4697   29.0    2.5 KB
+
+## param — GET /users/123456
+
+  repetition 1/3 complete
+  repetition 2/3 complete
+  repetition 3/3 complete
+framework  req/s (best)  req/s (median)  spread  p50  p99   p99.9  allocs  B/op  
+---------  ------------  --------------  ------  ---  ----  -----  ------  ------
+net/http   264,256       262,769         1.5%    0    2510  4563   32.0    2.6 KB
+photon     293,947       291,940         8.6%    0    2381  4109   33.0    2.9 KB
+chi        284,808       254,263         12.3%   0    2493  4114   35.0    3.2 KB
+gin        292,888       291,177         7.7%    0    2401  4002   31.0    2.6 KB
+echo       286,392       285,877         2.4%    0    2328  4041   31.0    2.5 KB
+
+## resp-1kb — GET /resp-1kb
+
+  repetition 1/3 complete
+  repetition 2/3 complete
+  repetition 3/3 complete
+framework  req/s (best)  req/s (median)  spread  p50  p99   p99.9  allocs  B/op  
+---------  ------------  --------------  ------  ---  ----  -----  ------  ------
+net/http   277,444       273,943         2.3%    0    2452  4502   31.0    2.5 KB
+photon     277,426       266,151         8.9%    449  2374  4384   31.0    2.5 KB
+chi        264,621       263,990         5.9%    424  2620  4854   33.0    2.9 KB
+gin        262,047       242,767         10.5%   0    2815  4918   31.0    3.5 KB
+echo       267,477       263,352         9.7%    0    2699  4915   29.0    2.5 KB
+
+## resp-10kb — GET /resp-10kb
+
+  repetition 1/3 complete
+  repetition 2/3 complete
+  repetition 3/3 complete
+framework  req/s (best)  req/s (median)  spread  p50  p99   p99.9  allocs  B/op   
+---------  ------------  --------------  ------  ---  ----  -----  ------  -------
+net/http   211,821       208,600         7.6%    537  2726  5005   31.0    2.5 KB 
+photon     213,367       209,439         2.0%    532  2766  5151   31.0    2.5 KB 
+chi        203,959       197,280         8.3%    551  2975  5484   33.1    2.9 KB 
+gin        150,232       146,397         3.8%    854  4923  7615   35.2    12.7 KB
+echo       191,523       189,112         10.2%   646  2868  5348   33.1    2.6 KB 
+
+## resp-100kb — GET /resp-100kb
+
+  repetition 1/3 complete
+  repetition 2/3 complete
+  repetition 3/3 complete
+framework  req/s (best)  req/s (median)  spread  p50   p99    p99.9  allocs  B/op    
+---------  ------------  --------------  ------  ----  -----  -----  ------  --------
+net/http   107,364       104,174         7.7%    1003  4331   9243   31.1    2.6 KB  
+photon     109,308       105,446         8.1%    1003  4240   8533   31.1    2.6 KB  
+chi        107,071       106,409         1.2%    1003  4492   9331   33.1    2.9 KB  
+gin        41,004        40,414          2.1%    679   30470  50523  36.2    107.2 KB
+echo       101,040       99,531          1.7%    1005  4383   9357   33.1    2.6 KB  
+
+## req-1kb — POST /req-1kb
+
+  repetition 1/3 complete
+  repetition 2/3 complete
+  repetition 3/3 complete
+framework  req/s (best)  req/s (median)  spread  p50  p99   p99.9  allocs  B/op   
+---------  ------------  --------------  ------  ---  ----  -----  ------  -------
+net/http   129,339       128,178         0.9%    537  7338  12567  26.3    33.9 KB
+photon     132,611       132,173         2.9%    534  7325  12705  26.3    33.9 KB
+chi        130,193       125,209         28.5%   534  7525  12922  28.4    34.2 KB
+gin        129,998       127,773         15.2%   536  7536  12919  26.4    33.9 KB
+echo       131,180       130,743         16.4%   535  7403  12471  26.4    33.9 KB
+
+## req-100kb — POST /req-100kb
+
+  repetition 1/3 complete
+  repetition 2/3 complete
+  repetition 3/3 complete
+framework  req/s (best)  req/s (median)  spread  p50   p99    p99.9  allocs  B/op   
+---------  ------------  --------------  ------  ----  -----  -----  ------  -------
+net/http   78,449        61,822          27.3%   685   13077  22256  26.3    33.9 KB
+photon     66,615        65,844          9.6%    890   15605  25458  26.3    33.9 KB
+chi        66,797        64,071          8.3%    1000  15140  26899  28.4    34.3 KB
+gin        66,312        63,651          14.2%   1002  15214  25611  26.4    33.9 KB
+echo       72,499        69,041          24.2%   837   13508  23692  26.4    33.9 KB
+
+## req-1mb — POST /req-1mb
+
+  repetition 1/3 complete
+  repetition 2/3 complete
+  repetition 3/3 complete
+framework  req/s (best)  req/s (median)  spread  p50    p99     p99.9   allocs  B/op   
+---------  ------------  --------------  ------  -----  ------  ------  ------  -------
+net/http   7,249         7,090           10.7%   9374   125923  186773  26.7    34.7 KB
+photon     7,301         6,669           10.6%   9746   125234  193257  26.7    34.7 KB
+chi        7,189         6,774           8.3%    10127  124844  186550  28.8    35.1 KB
+gin        7,185         6,806           8.9%    10617  121499  177492  26.8    34.7 KB
+echo       7,152         6,632           9.5%    10129  124061  187599  26.8    34.7 KB
+
+## noop — GET /
+
+  repetition 1/3 complete
+  repetition 2/3 complete
+  repetition 3/3 complete
+framework  req/s (best)  req/s (median)  spread  p50  p99   p99.9  allocs  B/op  
+---------  ------------  --------------  ------  ---  ----  -----  ------  ------
+net/http   243,026       227,155         12.0%   506  2755  5342   27.0    2.4 KB
+photon     262,992       234,333         12.9%   0    2537  4842   27.0    2.4 KB
+chi        281,794       239,035         32.4%   0    2485  4262   29.0    2.8 KB
+gin        234,211       231,099         8.2%    518  3000  5924   26.0    2.4 KB
+echo       272,605       247,171         23.4%   0    2637  5297   27.0    2.4 KB
+

@@ -1,0 +1,12 @@
+# Build artifacts and installed dependencies for the streaming audit.
+#
+# All of these are reproducible from build.ps1 and the two install commands in
+# README.md, so none of them belong in the repository. results-streaming.txt is
+# deliberately NOT ignored: it is the recorded evidence for every number in the
+# report, and the audit's rule is that no figure is published that this harness
+# did not produce.
+
+bin/
+node/node_modules/
+python/.venv/
+python/__pycache__/

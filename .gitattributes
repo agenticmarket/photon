@@ -1,0 +1,7 @@
+# Normalise line endings in the repository; Windows checkouts may still use
+# CRLF in the working tree through core.autocrlf.
+* text=auto
+*.go text eol=lf
+*.md text eol=lf
+*.ps1 text eol=crlf
+*.prof binary

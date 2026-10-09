@@ -1,0 +1,6 @@
+--- FAIL: BenchmarkSSETokenLatency
+    perf_bench_test.go:140: event 0 was not delivered within 3s
+FAIL
+exit status 1
+FAIL	photon	3.905s
+FAIL

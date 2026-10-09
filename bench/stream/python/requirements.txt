@@ -1,0 +1,9 @@
+# Python streaming-audit server dependencies.
+#
+# Pinned to the versions this audit was run against, so a re-run reproduces the
+# recorded numbers rather than measuring a newer release. An unpinned harness
+# silently becomes a different experiment over time.
+
+fastapi==0.141.1
+starlette==1.7.0
+uvicorn==0.54.0

@@ -1,0 +1,55 @@
+# Streaming audit — SSE across Go, Node, and Python
+
+Streams 1,10, 100 events each, 5 streams per connection, 2 repetitions.
+Best and median of the repetitions are both reported, with the spread.
+
+Every server does the same work: the same number of streams, each carrying
+the same number of events. Throughput is derived from the time that work
+actually took, so a faster server is not penalised for finishing early.
+
+Every server emits byte-identical frames; that is verified before every
+run by equivcheck, and a mismatch fails the run rather than being reported.
+
+**Read the language column before comparing rows.** Go, Node, and Python
+differ by more than the frameworks do: CPython's GIL, libuv's event loop, and
+Go's goroutines are the dominant variable. The honest reading is "photon
+against the best of each ecosystem", not "faster than FastAPI".
+
+Each language's floor (net/http, node:http, raw ASGI) is in the table on
+purpose: without it, the comparison is between whole stacks rather than
+between frameworks.
+
+TTFE is the median time to first event, which is what a user perceives as
+responsiveness. RSS is the server process's own peak, read in-process.
+Each server runs alone; the driver is a separate process, so no client cost
+is inside a server's measurement.
+
+```
+
+## 1 concurrent stream(s), 100 events each, 5 streams per connection
+
+framework       lang  events/s (med)  events/s (best)  TTFE us  RSS MB  spread  note
+--------------  ----  --------------  ---------------  -------  ------  ------  ----------------------------------------------------------------------
+photon          go    476,099         945,537          525      10.8    99%     photon default: sends at once; batches only while a write is in flight
+photon (tight)  go    155,695         189,767          524      6.5     22%     photon 512 B buffer: a few frames per write
+chi             go    133,326         136,002          525      10.5    2%
+gin             go    118,220         135,965          520      10.5    15%
+echo            go    118,889         135,718          523      10.5    14%
+net/http        go    105,471         135,424          528      6.5     28%     floor: no framework
+fastify         node  78,580          201,272          524      67.2    156%    reply.raw path, as Fastify's docs recommend
+express         node  76,209          159,856          525      60.5    110%
+node:http       node  64,369          213,419          523      53.5    232%    floor: no framework
+
+## 10 concurrent stream(s), 100 events each, 5 streams per connection
+
+framework       lang  events/s (med)  events/s (best)  TTFE us  RSS MB  spread  note
+--------------  ----  --------------  ---------------  -------  ------  ------  ----------------------------------------------------------------------
+photon          go    1,838,235       1,871,887        538      18.2    2%      photon default: sends at once; batches only while a write is in flight
+photon (tight)  go    952,725         1,138,952        526      17.9    20%     photon 512 B buffer: a few frames per write
+chi             go    701,586         707,904          523      21.0    1%
+gin             go    633,761         656,529          527      17.8    4%
+echo            go    626,244         714,122          656      16.3    14%
+net/http        go    712,423         761,081          523      16.5    7%      floor: no framework
+fastify         node  262,897         365,312          2328     70.8    39%     reply.raw path, as Fastify's docs recommend
+express         node  237,460         325,781          3619     65.5    37%
+node:http       node  260,594         398,749          2986     55.1    53%     floor: no framework

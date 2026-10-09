@@ -1,0 +1,60 @@
+goos: windows
+goarch: amd64
+pkg: photon
+cpu: AMD Ryzen 7 6800HS with Radeon Graphics         
+BenchmarkServerStatic-16             	 5456358	       224.8 ns/op	     480 B/op	       5 allocs/op
+BenchmarkServerStatic-16             	 5245910	       225.7 ns/op	     480 B/op	       5 allocs/op
+BenchmarkServerStatic-16             	 5462053	       224.8 ns/op	     480 B/op	       5 allocs/op
+BenchmarkServerStatic-16             	 4704933	       230.3 ns/op	     480 B/op	       5 allocs/op
+BenchmarkServerStatic-16             	 5332368	       239.3 ns/op	     480 B/op	       5 allocs/op
+BenchmarkServerStatic-16             	 4254717	       248.0 ns/op	     480 B/op	       5 allocs/op
+BenchmarkServerParam-16              	 1731096	       642.8 ns/op	     936 B/op	       9 allocs/op
+BenchmarkServerParam-16              	 1501875	       717.8 ns/op	     936 B/op	       9 allocs/op
+BenchmarkServerParam-16              	 2032107	       593.7 ns/op	     936 B/op	       9 allocs/op
+BenchmarkServerParam-16              	 2059011	       610.5 ns/op	     936 B/op	       9 allocs/op
+BenchmarkServerParam-16              	 1528263	       740.4 ns/op	     936 B/op	       9 allocs/op
+BenchmarkServerParam-16              	 2002178	       642.0 ns/op	     936 B/op	       9 allocs/op
+BenchmarkServerParallel-16           	 4022734	       289.3 ns/op	     905 B/op	       9 allocs/op
+BenchmarkServerParallel-16           	 4081032	       299.9 ns/op	     905 B/op	       9 allocs/op
+BenchmarkServerParallel-16           	 3624363	       313.7 ns/op	     905 B/op	       9 allocs/op
+BenchmarkServerParallel-16           	 3625200	       329.9 ns/op	     905 B/op	       9 allocs/op
+BenchmarkServerParallel-16           	 4095715	       296.7 ns/op	     905 B/op	       9 allocs/op
+BenchmarkServerParallel-16           	 4040472	       306.7 ns/op	     905 B/op	       9 allocs/op
+BenchmarkRouterParallelStatic-16     	40071058	        29.86 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRouterParallelStatic-16     	39902769	        29.78 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRouterParallelStatic-16     	40565482	        29.91 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRouterParallelStatic-16     	39642555	        30.29 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRouterParallelStatic-16     	39730231	        30.53 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRouterParallelStatic-16     	37945383	        30.60 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSSEBurst-16                 	 6004278	       194.6 ns/op	 190.13 MB/s	      49 B/op	       1 allocs/op
+BenchmarkSSEBurst-16                 	 6036162	       202.1 ns/op	 183.04 MB/s	      49 B/op	       1 allocs/op
+BenchmarkSSEBurst-16                 	 6358050	       189.8 ns/op	 194.89 MB/s	      49 B/op	       1 allocs/op
+BenchmarkSSEBurst-16                 	 6257494	       192.8 ns/op	 191.96 MB/s	      49 B/op	       1 allocs/op
+BenchmarkSSEBurst-16                 	 6247900	       190.7 ns/op	 194.01 MB/s	      49 B/op	       1 allocs/op
+BenchmarkSSEBurst-16                 	 6200479	       196.6 ns/op	 188.24 MB/s	      49 B/op	       1 allocs/op
+BenchmarkSSEConcurrentStreams-16     	   80431	     13441 ns/op	   3719927 events/s	    9721 B/op	     103 allocs/op
+BenchmarkSSEConcurrentStreams-16     	   81465	     12778 ns/op	   3913093 events/s	    9591 B/op	     103 allocs/op
+BenchmarkSSEConcurrentStreams-16     	   83144	     14083 ns/op	   3550448 events/s	    9710 B/op	     103 allocs/op
+BenchmarkSSEConcurrentStreams-16     	   74834	     14797 ns/op	   3379044 events/s	    9872 B/op	     103 allocs/op
+BenchmarkSSEConcurrentStreams-16     	   59344	     19527 ns/op	   2560575 events/s	    9911 B/op	     103 allocs/op
+BenchmarkSSEConcurrentStreams-16     	   72262	     27743 ns/op	   1802288 events/s	    9987 B/op	     103 allocs/op
+BenchmarkRegister5000Routes-16       	       1	9263460200 ns/op	3797546472 B/op	63827008 allocs/op
+BenchmarkRegister5000Routes-16       	       1	6758692300 ns/op	3797521712 B/op	63827075 allocs/op
+BenchmarkRegister5000Routes-16       	       1	6699776000 ns/op	3797525144 B/op	63827001 allocs/op
+BenchmarkRegister5000Routes-16       	       1	6991690700 ns/op	3797575472 B/op	63827154 allocs/op
+BenchmarkRegister5000Routes-16       	       1	8549388700 ns/op	3797515800 B/op	63826940 allocs/op
+BenchmarkRegister5000Routes-16       	       1	7272740800 ns/op	3797527960 B/op	63826978 allocs/op
+BenchmarkRouterStatic/routes=1000-16 	20856253	        60.66 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRouterStatic/routes=1000-16 	23281666	        60.03 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRouterStatic/routes=1000-16 	23538596	        52.59 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRouterStatic/routes=1000-16 	24216642	        52.16 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRouterStatic/routes=1000-16 	26891056	        59.52 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRouterStatic/routes=1000-16 	20682451	        60.28 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRouterParam/routes=1000-16  	 1770435	       604.5 ns/op	     456 B/op	       4 allocs/op
+BenchmarkRouterParam/routes=1000-16  	 2140818	       615.7 ns/op	     456 B/op	       4 allocs/op
+BenchmarkRouterParam/routes=1000-16  	 2344974	       462.8 ns/op	     456 B/op	       4 allocs/op
+BenchmarkRouterParam/routes=1000-16  	 2225218	       593.3 ns/op	     456 B/op	       4 allocs/op
+BenchmarkRouterParam/routes=1000-16  	 2145250	       570.2 ns/op	     456 B/op	       4 allocs/op
+BenchmarkRouterParam/routes=1000-16  	 2379906	       431.7 ns/op	     456 B/op	       4 allocs/op
+PASS
+ok  	photon	129.284s

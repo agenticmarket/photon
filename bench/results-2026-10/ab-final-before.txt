@@ -1,0 +1,66 @@
+goos: windows
+goarch: amd64
+pkg: photon
+cpu: AMD Ryzen 7 6800HS with Radeon Graphics         
+BenchmarkServerStatic-16            	 3914230	       313.0 ns/op	     800 B/op	       6 allocs/op
+BenchmarkServerParam-16             	 1629373	       713.3 ns/op	    1257 B/op	      10 allocs/op
+BenchmarkServerParallel-16          	 2753054	       416.6 ns/op	    1226 B/op	      10 allocs/op
+BenchmarkRouterParallelStatic-16    	40043512	        30.14 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSSEBurst-16                	 6183844	       183.4 ns/op	 201.74 MB/s	      49 B/op	       1 allocs/op
+BenchmarkSSEConcurrentStreams-16    	   90739	     12741 ns/op	   3924217 events/s	    9648 B/op	     103 allocs/op
+PASS
+goos: windows
+goarch: amd64
+pkg: photon
+cpu: AMD Ryzen 7 6800HS with Radeon Graphics         
+BenchmarkServerStatic-16            	 4005344	       316.5 ns/op	     800 B/op	       6 allocs/op
+BenchmarkServerParam-16             	 1907499	       646.8 ns/op	    1257 B/op	      10 allocs/op
+BenchmarkServerParallel-16          	 3176763	       407.1 ns/op	    1226 B/op	      10 allocs/op
+BenchmarkRouterParallelStatic-16    	40941378	        29.92 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSSEBurst-16                	 6157729	       186.4 ns/op	 198.49 MB/s	      49 B/op	       1 allocs/op
+BenchmarkSSEConcurrentStreams-16    	   91867	     12814 ns/op	   3901865 events/s	    9614 B/op	     103 allocs/op
+PASS
+goos: windows
+goarch: amd64
+pkg: photon
+cpu: AMD Ryzen 7 6800HS with Radeon Graphics         
+BenchmarkServerStatic-16            	 3655999	       311.4 ns/op	     800 B/op	       6 allocs/op
+BenchmarkServerParam-16             	 1972094	       645.8 ns/op	    1257 B/op	      10 allocs/op
+BenchmarkServerParallel-16          	 2967614	       411.4 ns/op	    1226 B/op	      10 allocs/op
+BenchmarkRouterParallelStatic-16    	40812716	        29.93 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSSEBurst-16                	 6580930	       183.1 ns/op	 202.02 MB/s	      49 B/op	       1 allocs/op
+BenchmarkSSEConcurrentStreams-16    	   91207	     11812 ns/op	   4233069 events/s	    9620 B/op	     103 allocs/op
+PASS
+goos: windows
+goarch: amd64
+pkg: photon
+cpu: AMD Ryzen 7 6800HS with Radeon Graphics         
+BenchmarkServerStatic-16            	 3865592	       336.3 ns/op	     800 B/op	       6 allocs/op
+BenchmarkServerParam-16             	 1648378	       799.6 ns/op	    1257 B/op	      10 allocs/op
+BenchmarkServerParallel-16          	 3002643	       421.8 ns/op	    1226 B/op	      10 allocs/op
+BenchmarkRouterParallelStatic-16    	39541971	        30.22 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSSEBurst-16                	 6328288	       183.0 ns/op	 202.15 MB/s	      49 B/op	       1 allocs/op
+BenchmarkSSEConcurrentStreams-16    	   85243	     12544 ns/op	   3986087 events/s	    9571 B/op	     103 allocs/op
+PASS
+goos: windows
+goarch: amd64
+pkg: photon
+cpu: AMD Ryzen 7 6800HS with Radeon Graphics         
+BenchmarkServerStatic-16            	 4120669	       307.3 ns/op	     800 B/op	       6 allocs/op
+BenchmarkServerParam-16             	 1897933	       648.9 ns/op	    1257 B/op	      10 allocs/op
+BenchmarkServerParallel-16          	 2966868	       406.1 ns/op	    1226 B/op	      10 allocs/op
+BenchmarkRouterParallelStatic-16    	39936898	        29.44 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSSEBurst-16                	 6349938	       187.7 ns/op	 197.17 MB/s	      49 B/op	       1 allocs/op
+BenchmarkSSEConcurrentStreams-16    	   82136	     12713 ns/op	   3932939 events/s	    9632 B/op	     103 allocs/op
+PASS
+goos: windows
+goarch: amd64
+pkg: photon
+cpu: AMD Ryzen 7 6800HS with Radeon Graphics         
+BenchmarkServerStatic-16            	 4052461	       300.5 ns/op	     800 B/op	       6 allocs/op
+BenchmarkServerParam-16             	 1861920	       760.6 ns/op	    1257 B/op	      10 allocs/op
+BenchmarkServerParallel-16          	 2721093	       432.0 ns/op	    1226 B/op	      10 allocs/op
+BenchmarkRouterParallelStatic-16    	40371960	        29.74 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSSEBurst-16                	 6508548	       186.7 ns/op	 198.14 MB/s	      49 B/op	       1 allocs/op
+BenchmarkSSEConcurrentStreams-16    	   87668	     11927 ns/op	   4192240 events/s	    9536 B/op	     103 allocs/op
+PASS

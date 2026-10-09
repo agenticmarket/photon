@@ -1,0 +1,26 @@
+# Local tool directories
+.andromity/
+.kilo/
+.wrangler/
+
+# The website (photon.agenticmarket.dev) is deployed separately
+/site/
+
+# Build artifacts
+*.exe
+*.test
+*.out
+cover/
+coverage.txt
+
+# Fuzzing: the corpus is committed, the crash cache is not
+testdata/fuzz/*/
+!testdata/fuzz/*/*/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Local benchmark scratch output (committed results live in bench/)
+.bench/

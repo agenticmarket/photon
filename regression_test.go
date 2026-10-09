@@ -1173,13 +1173,20 @@ func TestSteadySlowReaderIsNotDisconnected(t *testing.T) {
 	defer c.Close()
 	_, _ = io.WriteString(c, "GET /s HTTP/1.1\r\nHost: x\r\n\r\n")
 
-	// Read 16 KB every 100 ms - 160 KB/s - for three seconds, long after every
-	// socket buffer between the two ends has filled. The margin over the 2 s
-	// stall is deliberate: TCP only reports freed receive window in large
-	// steps (up to one MSS, about 64 KB on loopback), so the progress a sender
-	// can observe is coarser than the rate the reader actually sustains.
-	buf := make([]byte, 16<<10)
-	deadline := time.Now().Add(3 * time.Second)
+	// Read 64 KB every 50 ms - about 1.3 MB/s, far below what the producer
+	// offers - for four seconds, long after every socket buffer between the two
+	// ends has filled.
+	//
+	// The rate is set by how coarsely TCP reports progress, not by what Photon
+	// needs. Once a receive window has closed, Linux does not reopen it until
+	// a sixteenth of the receive buffer is free (receiver-side silly-window
+	// avoidance), and loopback buffers autotune to 6 MB - so the sender sees
+	// progress only every ~384 KB read. At 160 KB/s that is 2.4 s, longer than
+	// the 2 s stall used here, and the reader looks stopped although it never
+	// is. Windows reopens the window in much smaller steps. With the default
+	// 30 s stall the same reader is served on every platform.
+	buf := make([]byte, 64<<10)
+	deadline := time.Now().Add(4 * time.Second)
 	for time.Now().Before(deadline) {
 		if _, err := io.ReadFull(c, buf); err != nil {
 			t.Fatalf("read while reading steadily: %v", err)
@@ -1189,7 +1196,7 @@ func TestSteadySlowReaderIsNotDisconnected(t *testing.T) {
 			t.Fatalf("a steadily reading client was disconnected: %v", err)
 		default:
 		}
-		time.Sleep(100 * time.Millisecond)
+		time.Sleep(50 * time.Millisecond)
 	}
 
 	// Now stop reading. The stream must end on its own, with ErrStreamOverflow.

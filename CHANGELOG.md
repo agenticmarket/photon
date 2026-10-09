@@ -6,6 +6,17 @@ changes, and every one is listed here with what to do about it.
 
 ## Unreleased
 
+### Added
+
+- **`photon version`** prints the installed release, platform and Go version
+  (`photon v0.1.1 linux/amd64 go1.27.2`). Builds from a checkout report
+  `(devel)` and the commit.
+- **`photon init` pins the matching Photon release.** A CLI installed at a
+  tagged version writes that version into the new project's `go.mod`, so the
+  template always compiles against the API it was written for.
+
+## v0.1.0 — 2026-10-09
+
 The first public release, licensed under the Apache License 2.0. Compared
 with the pre-release code, this fixes defects that made streaming unusable,
 closes two security holes, and reworks the API for everyday use. Measurements

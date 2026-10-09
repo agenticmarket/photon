@@ -5,6 +5,7 @@
 //	photon bench http://localhost:8484/agent/stream
 //	                                       measure any SSE endpoint: time to first event,
 //	                                       gaps between events, events per second
+//	photon version                         print the installed release
 //
 // Install it with:
 //
@@ -22,9 +23,10 @@ Usage:
   photon <command> [arguments]
 
 Commands:
-  init   Scaffold a new service from a template
-  serve  Run the demo AI streaming service (dashboard, SSE, OpenAI-compatible API)
-  bench  Benchmark any SSE endpoint: time to first event, event gaps, throughput
+  init     Scaffold a new service from a template
+  serve    Run the demo AI streaming service (dashboard, SSE, OpenAI-compatible API)
+  bench    Benchmark any SSE endpoint: time to first event, event gaps, throughput
+  version  Print the installed version
 
 Examples:
   photon init my-agent -template agent
@@ -47,6 +49,8 @@ func main() {
 		err = runServe(args)
 	case "bench":
 		err = runBench(args)
+	case "version", "-version", "--version":
+		err = runVersion(args)
 	case "help", "-h", "-help", "--help":
 		fmt.Print(usage)
 		return

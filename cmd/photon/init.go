@@ -89,8 +89,14 @@ func runInit(args []string) error {
 		return err
 	}
 	gomod := "module " + *module + "\n\ngo 1.24\n"
-	if replace != "" {
+	switch v := releaseVersion(); {
+	case replace != "":
 		gomod += "\nrequire " + photonModule + " v0.0.0\n\nreplace " + photonModule + " => " + replace + "\n"
+	case v != "":
+		// Pin the release this CLI belongs to, so the template compiles
+		// against the API it was written for. A development build leaves the
+		// choice to `go mod tidy`, which picks the latest release.
+		gomod += "\nrequire " + photonModule + " " + v + "\n"
 	}
 	if err := os.WriteFile(filepath.Join(dir, "go.mod"), []byte(gomod), 0o644); err != nil {
 		return err
